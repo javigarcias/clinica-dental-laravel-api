@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\QueryException;
 
 class ClienteController extends Controller
 {
@@ -27,6 +29,42 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+        //Guardamos en variables los datos introducidos por el body
+
+        $nombre = $request->input('nombre');
+        $apellidos = $request->input('apellidos');
+        $telefono = $request->input('telefono');
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        //Encriptación del password
+
+        $password = Hash::make($password);
+
+        try {
+
+            return Cliente::create(
+                [
+                    'nombre' => $nombre,
+                    'apellidos' => $apellidos,
+                    'telefono' => $telefono,
+                    'email' => $email,
+                    'password' => $password,
+                ]);
+        
+        }catch(QueryException $error) {
+            
+            $eCode = $error->errorInfo[1];
+
+            if($eCode == 1062) {
+                return response()->json([
+                    'error' => "El mail introducido ya está registrado"
+                ]);
+            }
+        }
+    }
+
+/*
         $input=$request->all();
 
         $rules=[
@@ -54,7 +92,7 @@ class ClienteController extends Controller
             return $cliente;
         }
     }
-
+*/
     /**
      * Display the specified resource.
      *
