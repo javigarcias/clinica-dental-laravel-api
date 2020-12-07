@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ClienteController extends Controller
 {
@@ -14,17 +15,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $clientes = Cliente::all();
+        return $clientes;
     }
 
     /**
@@ -35,7 +27,32 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input=$request->all();
+
+        $rules=[
+            'nombre'=> 'required|min:5',
+            'apellidos'=> 'required',
+            'telefono'=> 'required',
+            'email'=> 'required',
+            'password'=> 'required',
+        ];
+
+        $messages=[
+            'nombre.required' => 'No has introducido el nombre',
+            'nombre.min' => 'El nombre tiene menos de 5 caracteres',
+            'telefono.required' => 'No has introducido el teléfono',
+            'email.required' => 'No has introducido el mail',
+            'password.required' => 'No has introducido el password',
+        ];
+
+        $validator = validator::make($input, $rules, $messages);
+
+        if ($validator->fails()) {
+            return response()->json([$validator->errors()],400); 
+        }else{
+            $cliente=Cliente::create($input);
+            return $cliente;
+        }
     }
 
     /**
@@ -45,17 +62,6 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Cliente $cliente)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Cliente  $cliente
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Cliente $cliente)
     {
         //
     }
