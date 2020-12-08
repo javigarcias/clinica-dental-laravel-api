@@ -26,6 +26,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Registro de usuarios
 Route::post('registro', [UserController::class, 'store']);
+//Login de usuarios
+Route::post('login', [UserController::class, 'login']);
 
 Route::apiResource('clientes', ClienteController::class);
 Route::apiResource('dentistas', DentistaController::class);

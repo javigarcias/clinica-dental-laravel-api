@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -38,6 +39,20 @@ class UserController extends Controller
          
             $newUser=User::create($input);
             return $newUser;
+        }
+    }
+
+    public function login(Request $request)
+    {
+        $credenciales = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+
+        if(Auth::attempt($credenciales)){
+            return response()->json('Logeado correctamente', 400);
+        }else{
+            return response()->json(['error'=>'Credenciales incorrectas'], 203);
         }
     }
 }
