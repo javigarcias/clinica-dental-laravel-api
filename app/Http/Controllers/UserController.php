@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\QueryException;
 
 class UserController extends Controller
 {
@@ -16,7 +18,7 @@ class UserController extends Controller
             'name'=> 'required',
             'lastName'=> 'required',
             'phone'=> 'required',
-            'email'=> 'required|unique',
+            'email'=> 'required',
             'password'=> 'required' 
         ];
 
@@ -25,7 +27,6 @@ class UserController extends Controller
             'lastName.required' => 'No has introducido los apellidos',
             'phone.required' => 'No has introducido el nombre',
             'email.required' => 'No has introducido email',
-            'email.unique' => 'El mail introducido ya existe',
             'password.required' => 'No has introducido el password',
         ];
 
@@ -37,5 +38,6 @@ class UserController extends Controller
          
             $newUser=User::create($input);
             return $newUser;
+        }
     }
 }
