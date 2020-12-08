@@ -11,4 +11,9 @@ class Dentista extends Model
     
     protected $guarded = [];
 
+    public function citas()
+    {
+        return $this->hasMany('App\Models\Cita');
+    }
+
 }

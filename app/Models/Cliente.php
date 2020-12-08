@@ -10,4 +10,9 @@ class Cliente extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function citas()
+    {
+        return $this->hasMany('App\Models\Cita');
+    }
 }

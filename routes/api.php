@@ -24,3 +24,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('clientes', ClienteController::class);
 Route::apiResource('dentistas', DentistaController::class);
+Route::apiResource('citas', CitaController::class);
