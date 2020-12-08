@@ -11,9 +11,9 @@ class Cita extends Model
 
     protected $guarded = [];
     
-    public function clientes()
+    public function users()
     {
-        return $this->belongsTo('App\Models\Cliente','cliente_id');
+        return $this->belongsTo('App\Models\User','user_id');
     }
 
     public function dentistas()

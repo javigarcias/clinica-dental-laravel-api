@@ -20,7 +20,7 @@ class CreateCitasTable extends Migration
             $table->date('fecha');
             $table->time('hora');
             $table->enum('estado',['pendiente','realizada','cancelada']);
-            $table->foreignId('cliente_id')->constrained('clientes');
+            $table->foreignId('user_id')->constrained('users');
             $table->foreignId('dentista_id')->constrained('dentistas');
         });
     }

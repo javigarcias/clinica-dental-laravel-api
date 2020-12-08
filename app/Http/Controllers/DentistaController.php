@@ -30,35 +30,27 @@ class DentistaController extends Controller
      */
     public function store(Request $request)
     {
-       //Guardamos en variables los datos introducidos por el body
+        $input = $request->all();
 
-       $nombre = $request->input('nombre');
-       $email = $request->input('email');
-       $password = $request->input('password');
+        $rules=[
+            'nombre'=> 'required',
+            'especialidad'=> 'required',
+        ];
 
-       //Encriptación del password
+        $messages=[
+            'nombre.required' => 'No has introducido el nombre',
+            'especialidad.required' => 'No has introducido su especialidad',
+        ];
 
-       $password = Hash::make($password);
+        $validator = validator::make($input, $rules, $messages);
 
-       try {
-
-           return Dentista::create(
-               [
-                   'nombre' => $nombre,
-                   'email' => $email,
-                   'password' => $password,
-               ]);
-       
-       }catch(QueryException $error) {
-           
-           $eCode = $error->errorInfo[1];
-
-           if($eCode == 1062) {
-               return response()->json([
-                   'error' => "El mail introducido ya está registrado"
-               ]);
-           }
-       }
+        if ($validator->fails()) {
+            return response()->json([$validator->errors()],400); 
+        }else{
+         
+            $nuevoDentista = Dentista::create($input);
+            return $nuevoDentista;
+        }
     }
     
 

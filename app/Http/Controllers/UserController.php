@@ -50,9 +50,15 @@ class UserController extends Controller
         ];
 
         if(Auth::attempt($credenciales)){
-            return response()->json('Logeado correctamente', 400);
+            $user = Auth::user();
+            $token = $user->createToken('User')->accessToken;
+
+            $respuesta=[];
+            $respuesta['name']= $user->name;
+            $respuesta['token']= 'Bearer '.$token;
+            return response()->json($respuesta, 200);
         }else{
-            return response()->json(['error'=>'Credenciales incorrectas'], 203);
+            return response()->json(['error'=>'Credenciales incorrectas'], 401);
         }
     }
 }

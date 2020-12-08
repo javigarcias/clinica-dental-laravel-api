@@ -17,9 +17,8 @@ class CreateDentistasTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nombre');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('token')->nullable();
+            $table->string('especialidad');
+           
         });
     }
 
