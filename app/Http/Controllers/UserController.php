@@ -61,4 +61,18 @@ class UserController extends Controller
             return response()->json(['error'=>'Credenciales incorrectas'], 401);
         }
     }
+
+    public function logout(Request $request)
+    {
+        $token = $request->user()->token();
+        $token ->revoke();
+
+        return response()->json('Logout OK', 200);
+    }
+
+    public function index()
+    {
+        $users = User::all();
+        return $users;
+    }
 }
