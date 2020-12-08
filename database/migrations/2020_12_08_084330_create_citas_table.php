@@ -18,7 +18,7 @@ class CreateCitasTable extends Migration
             $table->timestamps();
             $table->string('tratamiento');
             $table->date('fecha');
-            $table->time('nombre');
+            $table->time('hora');
             $table->enum('estado',['pendiente','realizada','cancelada']);
             $table->foreignId('cliente_id')->constrained('clientes');
             $table->foreignId('dentista_id')->constrained('dentistas');
