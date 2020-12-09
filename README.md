@@ -16,7 +16,7 @@ _Este proyecto consiste en la creación de una base de datos para la gestión de
 _Para poder poner en funcionamiento el proyecto en tu maquina local para propositos de desarrollo y pruebas necesitaras:_
 
 * [Descargar Repositorio Backend](https://github.com/javigarcias/clinica-dental-laravel-api)
-* [Enlace Frontend](https://clinica-dental-b.herokuapp.com/)
+* [Enlace Frontend](https://clinica-dental-f.herokuapp.com/)
 
 - En el backend ejecutar:
 ```
