@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Cita;
 use App\Models\Dentista;
 use App\Models\Cliente;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class CitaController extends Controller
 {
@@ -16,10 +18,18 @@ class CitaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexAll()
     {
         $citas = Cita::all();
         return $citas;
+    }
+
+    public function index($user)
+    {
+        $citasUser = DB::table('citas')
+                ->where('user_id', '=', $user)
+                ->get();
+        return $citasUser;
     }
 
     /**

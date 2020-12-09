@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+
+
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DentistaController;
 use App\Http\Controllers\CitaController;
@@ -36,4 +38,5 @@ Route::get('index', [UserController::class, 'index'])->middleware('auth:api');
 
 Route::apiResource('clientes', ClienteController::class);
 Route::apiResource('dentistas', DentistaController::class)->middleware('auth:api');
-Route::apiResource('citas', CitaController::class)->middleware('auth:api');
+Route::get('citas', [CitaController::class, 'indexAll']);
+Route::apiResource('user.citas', CitaController::class);

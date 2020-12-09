@@ -54,6 +54,7 @@ class UserController extends Controller
             $token = $user->createToken('User')->accessToken;
 
             $respuesta=[];
+            $respuesta['id']= $user->id;
             $respuesta['name']= $user->name;
             $respuesta['token']= 'Bearer '.$token;
             return response()->json($respuesta, 200);
