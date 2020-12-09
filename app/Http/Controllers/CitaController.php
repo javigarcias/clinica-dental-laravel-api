@@ -60,42 +60,11 @@ class CitaController extends Controller
         }else{
          
             $nueva_cita=Cita::create($input);
-            return $nueva_cita;
+            return response()->json('Logout OK', 200);
             
         }
 
-        /*
-        //Guardamos en variables los datos introducidos por el body
-
-        $tratamiento = $request->input('tratamiento');
-        $fecha = $request->input('fecha');
-        $hora = $request->input('hora');
-        $estado = 'pendiente';
-        $cliente_id = $request->input('cliente_id');
-        $dentista_id = $request->input('dentista_id');
-
-        try {
-
-            $nueva_cita = Cita::create(
-                [
-                    'tratamiento' => $tratamiento,
-                    'fecha' => $fecha,
-                    'hora' => $hora,
-                    'estado' => $estado,
-                    'cliente_id' => $cliente_id,
-                    'dentista_id' => $dentista_id,
-
-                ]);
-
-                return $nueva_cita;
         
-        }catch(QueryException $error) {
-            dd($request);
-            return response()-> json([
-                'error' => 'No se pudo crear la cita'
-            ], 500);
-        };
-        */
     }
 
 
@@ -130,6 +99,7 @@ class CitaController extends Controller
      */
     public function destroy(Cita $cita)
     {
-        //
+        Cita::destroy($cita->id);
+        return response()->json('Cita Borrada correctamente', 200);
     }
 }
