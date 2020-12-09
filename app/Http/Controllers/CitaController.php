@@ -40,7 +40,7 @@ class CitaController extends Controller
      */
     public function store(Request $request)
     {
-
+        
         $input = $request->all();
 
         $rules=[
@@ -60,13 +60,12 @@ class CitaController extends Controller
         }else{
          
             $nueva_cita=Cita::create($input);
-            return response()->json('Logout OK', 200);
+            return $nueva_cita;
             
         }
 
         
     }
-
 
     /**
      * Display the specified resource.

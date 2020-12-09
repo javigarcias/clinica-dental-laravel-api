@@ -38,6 +38,6 @@ Route::get('index', [UserController::class, 'index'])->middleware('auth:api');
 
 Route::apiResource('clientes', ClienteController::class);
 Route::apiResource('dentistas', DentistaController::class)->middleware('auth:api');
-Route::get('citas', [CitaController::class, 'indexAll']);
+Route::get('indexAll', [CitaController::class, 'indexAll']);
 Route::apiResource('user.citas', CitaController::class)->only(['index']);
 Route::apiResource('citas', CitaController::class);
