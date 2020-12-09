@@ -7,55 +7,51 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# Clinica Dental Database
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+_Este proyecto consiste en la creación de una base de datos para la gestión de citas de una clinica dental. Se ha realizado con una base de datos relaicional en Laravel con encriptación de password en el caso de registro de usuarios._
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Comenzando 🚀
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+_Para poder poner en funcionamiento el proyecto en tu maquina local para propositos de desarrollo y pruebas necesitaras:_
 
-## Learning Laravel
+* [Descargar Repositorio Backend](https://github.com/javigarcias/clinica-dental-laravel-api)
+* [Enlace Frontend](https://clinica-dental-b.herokuapp.com/)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- En el backend ejecutar:
+```
+php artisan serve
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+![](public/prueba-heroku.gif)
+### Endpoints 📌
+- /users:
+    - POST /api/registro (Registro de cliente nuevo)
+    - POST /api/login (Login cliente ya registrado)
+    - GET /api/logout (logout cliente logeado)
+- /citas:
+    - POST /api/citas (Creación de nueva cita)
+    - DELETE api/citas/{cita} (Cancelación de una cita)
+    - GET api/user/{user}/citas (Ver citas de un usuario mediante su id)
+    - GET api/indexAll (Ver todas las citas)
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Construido con 🛠️
 
-### Premium Partners
+_Tecnologías utilizadas en el proyecto_
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+- Javascript
+- PHP
+- Laravel
+- Eloquent
+- Artisan
+- Postman
+- Git
+- GitHub
 
-## Contributing
+## Autor ✒️
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* **Javier García**  - [javigarcias](https://github.com/javigarcias)
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+⌨️ con ❤️ por [JaviGarcia](https://www.linkedin.com/in/javigarciasanchez/) 😊
